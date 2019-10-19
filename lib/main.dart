@@ -94,7 +94,7 @@ class ChatScreenState extends State<ChatScreen> with TickerProviderStateMixin {
                 controller: _textController,
                 onChanged: (String text) {
                   setState(() {
-                    _isComposing = text.length > 0;
+                    _isComposing = text.trim().length > 0;
                   });
                 },
                 onSubmitted: _handleSubmitted,
