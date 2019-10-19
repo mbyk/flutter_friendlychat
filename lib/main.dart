@@ -50,33 +50,35 @@ class ChatScreenState extends State<ChatScreen> with TickerProviderStateMixin {
           elevation:
               Theme.of(context).platform == TargetPlatform.iOS ? 0.0 : 4.0,
         ),
-        body: Container(
-          child: Column(
-            children: <Widget>[
-              Flexible(
-                child: ListView.builder(
-                  padding: EdgeInsets.all(8.0),
-                  reverse: true,
-                  itemBuilder: (_, int index) => _messages[index],
-                  itemCount: _messages.length,
-                ),
-              ),
-              Divider(
-                height: 1.0,
-              ),
-              Container(
-                decoration: BoxDecoration(color: Theme.of(context).cardColor),
-                child: _buildTextComposer(),
-              )
-            ],
-          ),
-          decoration: Theme.of(context).platform == TargetPlatform.iOS
-              ? BoxDecoration(
-                  border: Border(
-                    top: BorderSide(color: Colors.grey[200]),
+        body: SafeArea(
+          child: Container(
+            child: Column(
+              children: <Widget>[
+                Flexible(
+                  child: ListView.builder(
+                    padding: EdgeInsets.all(8.0),
+                    reverse: true,
+                    itemBuilder: (_, int index) => _messages[index],
+                    itemCount: _messages.length,
                   ),
+                ),
+                Divider(
+                  height: 1.0,
+                ),
+                Container(
+                  decoration: BoxDecoration(color: Theme.of(context).cardColor),
+                  child: _buildTextComposer(),
                 )
-              : null,
+              ],
+            ),
+            decoration: Theme.of(context).platform == TargetPlatform.iOS
+                ? BoxDecoration(
+                    border: Border(
+                      top: BorderSide(color: Colors.grey[200]),
+                    ),
+                  )
+                : null,
+          ),
         ));
   }
 
